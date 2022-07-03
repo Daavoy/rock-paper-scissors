@@ -41,6 +41,29 @@ function whoBeatsWho(x,y){
 };
 
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound("rock", "scissors"));
+function game(){
+    let playerW = 0;
+    let computerW =0;
+    let draws = 0;
+    for(let i = 0; i<5;i++){
+        let player = prompt("rock, paper, scissors?");
+        let computer = computerPlay();
+        console.log(playRound(player,computer));
+        if(playRound(player,computer).includes("win")){
+            playerW ++;
+        }else if(playRound(player,computer).includes("lose")){
+            computerW ++;
+        }else{
+            draws++;
+        }
+    }
+    if(playerW<computerW){
+        console.log("The winner is the computer with " + computerW + " wins");
+    }else if(playerW>computerW){
+        console.log("The winner is player with " + playerW  + " wins");
+    }else{
+        console.log("The game ended in a draw");
+    }
+    console.log("Player wins: " + playerW + " Computer wins: " + computerW + " Draws: " + draws);
+}
+game();
